@@ -7,14 +7,14 @@ public:
     int key, value;
     Node* prev;
     Node* next;
-    Node(int k, int v) : key(k), value(v), prev(NULL), next(NULL) {}
+    Node(int k, int v) : { key(k), value(v), prev(NULL), next(NULL) };
 };
 
 class Cache {
 protected:
     int capacity;
 public:
-    Cache(int cap) { capacity = cap; }
+    Cache(int cap) { capacity = cap; };
     virtual void put(int key, int value) = 0;
     virtual int get(int key) = 0;
     ~Cache() {} 
@@ -24,6 +24,7 @@ class LRUCache : public Cache {
     Node* head;
     Node* tail;
     unordered_map<int, Node*> map;
+}
 
     void removeNode(Node* node) {
         node->prev->next = node->next;
